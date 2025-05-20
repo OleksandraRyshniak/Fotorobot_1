@@ -36,6 +36,7 @@
     <Content Include="pea2.png" />
     <Content Include="pea3.png" />
     <Content Include="pea4.png" />
+    <Content Include="silmad1.png" />
     <Content Include="Untitled.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
