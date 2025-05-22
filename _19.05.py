@@ -8,14 +8,20 @@ olemas={}
 objektid={}
 
 
-nagu=["pea1.png", "pea2.png", "pea3.png", "pea4.png", "pea5.png"]
+nagu=["pea1.png", "pea2.png", "pea3.png", "pea4.png"]
 nagu_index=-1
 
-silmad=["silmad1.png"]
+silmad=["silmad1.png", "silmad2.png", "silmad3.png", "silmad4.png"]
 silmad_index=-1
 
-juuksed=["juuksed1.png"]
+juuksed=["juuksed1.png", "juuksed2.png", "juuksed3.png", "juuksed4.png"]
 juuksed_index=-1
+
+nina=["nina1.png", "nina2.png", "nina3.png", "nina4.png"]
+nina_index=-1
+
+suu=["suu1.png", "suu2.png", "suu3.png", "suu4.png"]
+suu_index=-1
 
 def toggle_osa(nimi, fail, x, y):
     if olemas.get(nimi):
@@ -50,7 +56,19 @@ def toggle_silmad():
     olemas["silmad"] = False
     toggle_osa("silmad", fail, 200, 200)
 
+def toggle_nina():
+    global nina_index
+    nina_index = (nina_index + 1) % len(nina)
+    fail = nina[nina_index].strip()
+    olemas["nina"] = False
+    toggle_osa("nina", fail, 200, 200)
 
+def toggle_suu():
+    global suu_index
+    suu_index = (suu_index + 1) % len(suu)
+    fail = suu[suu_index].strip()
+    olemas["suu"] = False
+    toggle_osa("suu", fail, 200, 200)
 
 def salvesta_nägu():
     failnimi=simpledialog.askstring("Salvestapilt", "Sisesta failinimi (ilma laiendita):")
@@ -71,13 +89,13 @@ def salvesta_nägu():
 
     lõpp_pilt.save(failnimi+".png")
 
-# def mangi_muusika():
-#     pygame.mixer_music.play(loops=-1) 
-# def peata_muusika():
-#     pygame.mixer.music.stop()
+def mangi_muusika():
+    pygame.mixer_music.play(loops=-1) 
+def peata_muusika():
+    pygame.mixer.music.stop()
 
-# # pygame.mixer.init()
-# # pygame.mixer.music.load(файл с музыкой)
+pygame.mixer.init()
+pygame.mixer.music.load("muusika.mp3")
                                                                                                          
 app=ctk.CTk()
 app.geometry("800x800")
@@ -87,7 +105,7 @@ frame.pack(side="left", padx=10, pady=10)
 seaded={
     "width": 150, "height": 40,
     "font":("Segoe UI Emoji", 32),
-    "fg_color":"#4CAF50",
+    "fg_color":"blue",
     "text_color":"white",
     "corner_radius":20
     }
@@ -102,14 +120,14 @@ ctk.CTkLabel(frame, text="Vali näoosad:", **seaded).pack(pady=10)
 ctk.CTkButton(frame, text="Nägu", command=lambda: toggle_nagu(), **seaded).pack(pady=5)
 ctk.CTkButton(frame, text="Juuksed", command=lambda: toggle_juuksed(), **seaded).pack(pady=5)
 ctk.CTkButton(frame, text="Silmad", command=lambda: toggle_silmad(), **seaded).pack(pady=5)
-ctk.CTkButton(frame, text="Nina", command=lambda: toggle_osa("nina", "alus.png", 150,150), **seaded).pack(pady=5)
-ctk.CTkButton(frame, text="Suu", command=lambda: toggle_osa("suu", "alus.png", 150,150), **seaded).pack(pady=5)
+ctk.CTkButton(frame, text="Nina", command=lambda: toggle_nina(), **seaded).pack(pady=5)
+ctk.CTkButton(frame, text="Suu", command=lambda: toggle_suu(), **seaded).pack(pady=5)
 
 nupp=ctk.CTkButton(frame, text="Salvesta", command=salvesta_nägu, **seaded).pack(side="bottom", pady=5)
 
 frame_mus=ctk.CTkFrame(frame)
 frame_mus.pack( padx=10, pady=10)
-# ctk.CTkButton(frame_mus, text="Nängi muusikat", command=mangi_muusika, **seaded).pack(side="left", pady=5)
-# ctk.CTkButton(frame_mus, text="Peata muusika", command=peata_muusika, **seaded).pack(side="left", pady=5)
+ctk.CTkButton(frame_mus, text="Mängi muusikat", command=mangi_muusika, **seaded).pack(pady=5)
+ctk.CTkButton(frame_mus, text="Peata muusika", command=peata_muusika, **seaded).pack(pady=5)
 
 app.mainloop()

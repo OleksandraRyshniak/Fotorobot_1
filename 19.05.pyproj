@@ -21,23 +21,31 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="face.py" />
     <Compile Include="_19.05.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="alus.png" />
-    <Content Include="cnt_23_1.jpg" />
-    <Content Include="foto_raznyh_vidov_litsa.jpg" />
-    <Content Include="images.jpg" />
-    <Content Include="item_2596.jpg" />
-    <Content Include="item_2597.jpg" />
-    <Content Include="kulmud1.png" />
+    <Content Include="muusika.mp3" />
+    <Content Include="juuksed1.png" />
+    <Content Include="juuksed2.png" />
+    <Content Include="juuksed3.png" />
+    <Content Include="juuksed4.png" />
+    <Content Include="nina1.png" />
+    <Content Include="nina2.png" />
+    <Content Include="nina3.png" />
+    <Content Include="nina4.png" />
     <Content Include="pea1.png" />
     <Content Include="pea2.png" />
     <Content Include="pea3.png" />
     <Content Include="pea4.png" />
     <Content Include="silmad1.png" />
-    <Content Include="Untitled.jpg" />
+    <Content Include="silmad2.png" />
+    <Content Include="silmad3.png" />
+    <Content Include="silmad4.png" />
+    <Content Include="suu1.png" />
+    <Content Include="suu2.png" />
+    <Content Include="suu3.png" />
+    <Content Include="suu4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
