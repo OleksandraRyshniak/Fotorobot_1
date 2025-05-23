@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="alus.png" />
+    <Content Include="juuksed5.png" />
     <Content Include="muusika.mp3" />
     <Content Include="juuksed1.png" />
     <Content Include="juuksed2.png" />
@@ -34,18 +35,22 @@
     <Content Include="nina2.png" />
     <Content Include="nina3.png" />
     <Content Include="nina4.png" />
+    <Content Include="nina5.png" />
     <Content Include="pea1.png" />
     <Content Include="pea2.png" />
     <Content Include="pea3.png" />
     <Content Include="pea4.png" />
+    <Content Include="pea5.png" />
     <Content Include="silmad1.png" />
     <Content Include="silmad2.png" />
     <Content Include="silmad3.png" />
     <Content Include="silmad4.png" />
+    <Content Include="silmad5-Photoroom.png" />
     <Content Include="suu1.png" />
     <Content Include="suu2.png" />
     <Content Include="suu3.png" />
     <Content Include="suu4.png" />
+    <Content Include="suu5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

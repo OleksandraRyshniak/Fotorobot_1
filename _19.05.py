@@ -7,21 +7,20 @@ pildid={}
 olemas={}
 objektid={}
 
-
-nagu=["pea1.png", "pea2.png", "pea3.png", "pea4.png"]
-nagu_index=-1
-
-silmad=["silmad1.png", "silmad2.png", "silmad3.png", "silmad4.png"]
-silmad_index=-1
-
-juuksed=["juuksed1.png", "juuksed2.png", "juuksed3.png", "juuksed4.png"]
-juuksed_index=-1
-
-nina=["nina1.png", "nina2.png", "nina3.png", "nina4.png"]
-nina_index=-1
-
-suu=["suu1.png", "suu2.png", "suu3.png", "suu4.png"]
-suu_index=-1
+pildid1={
+    "pea": ["pea1.png", "pea2.png", "pea3.png", "pea4.png", "pea5.png"],
+    "juuksed": ["juuksed1.png", "juuksed2.png", "juuksed3.png", "juuksed4.png", "juuksed5.png"],
+    "silmad": ["silmad1.png", "silmad2.png", "silmad3.png", "silmad4.png", "silmad5.png"],
+    "nina": ["nina1.png", "nina2.png", "nina3.png", "nina4.png", "nina5.png"],
+    "suu": ["suu1.png", "suu2.png", "suu3.png", "suu4.png", "suu5.png"]
+    }
+indeks_pildid={
+    "indeks_pea": 0,
+    "indeks_juuksed": 0,
+    "indeks_silmad": 0,
+    "indeks_nina": 0,
+    "indeks_suu": 0
+    }
 
 def toggle_osa(nimi, fail, x, y):
     if olemas.get(nimi):
@@ -34,41 +33,7 @@ def toggle_osa(nimi, fail, x, y):
         objektid[nimi]=canvas.create_image(x,y,image=tk_img)
         olemas[nimi]=True
 
-def toggle_nagu():
-    global nagu_index
-    nagu_index = (nagu_index + 1) % len(nagu)
-    fail = nagu[nagu_index].strip()
-    olemas["nagu"] = False
-    toggle_osa("nagu", fail, 200, 200)
 
-def toggle_juuksed():
-    global juuksed_index
-    juuksed_index = (juuksed_index + 1) % len(juuksed)
-    fail = juuksed[juuksed_index].strip()
-    olemas["juuksed"] = False
-    toggle_osa("juuksed", fail, 200, 200)
-
-
-def toggle_silmad():
-    global silmad_index
-    silmad_index = (silmad_index + 1) % len(silmad)
-    fail = silmad[silmad_index].strip()
-    olemas["silmad"] = False
-    toggle_osa("silmad", fail, 200, 200)
-
-def toggle_nina():
-    global nina_index
-    nina_index = (nina_index + 1) % len(nina)
-    fail = nina[nina_index].strip()
-    olemas["nina"] = False
-    toggle_osa("nina", fail, 200, 200)
-
-def toggle_suu():
-    global suu_index
-    suu_index = (suu_index + 1) % len(suu)
-    fail = suu[suu_index].strip()
-    olemas["suu"] = False
-    toggle_osa("suu", fail, 200, 200)
 
 def salvesta_nägu():
     failnimi=simpledialog.askstring("Salvestapilt", "Sisesta failinimi (ilma laiendita):")
@@ -78,24 +43,25 @@ def salvesta_nägu():
     for nimi in ["nägu", "juuksed", "kulmud", "silmad", "nina", "suu"]:
         if olemas.get(nimi):
             failitee={
-                "nägu":"pea1.png",
-                "juuksed": "juuksed1.png",
-                "silmad":"silmad1.png",
-                "nina":"nina1.png",
-                "suu":"suu1.png"}.get(nimi)
+            "nägu":pildid1["pea"][indeks_pildid["indeks_pea"]],
+            "juuksed":pildid1["juuksed"][indeks_pildid["indeks_juuksed"]],
+            "silmad":pildid1["silmad"][indeks_pildid["indeks_silmad"]],
+            "nina":pildid1["nina"][indeks_pildid["indeka_nina"]],
+            "suu": pildid1["suu"][indeks_pildid["indeks_suu"]]
+            }.get(nimi)
             if failitee:
                 osa=Image.open(failitee).convert("RGBA").resize((400,400))
                 lõpp_pilt.alpha_composite(osa)
 
     lõpp_pilt.save(failnimi+".png")
 
-def mangi_muusika():
-    pygame.mixer_music.play(loops=-1) 
-def peata_muusika():
-    pygame.mixer.music.stop()
+# def mangi_muusika():
+#     pygame.mixer_music.play(loops=-1) 
+# def peata_muusika():
+#     pygame.mixer.music.stop()
 
-pygame.mixer.init()
-pygame.mixer.music.load("muusika.mp3")
+# pygame.mixer.init()
+# pygame.mixer.music.load("muusika.mp3")
                                                                                                          
 app=ctk.CTk()
 app.geometry("800x800")
@@ -125,9 +91,9 @@ ctk.CTkButton(frame, text="Suu", command=lambda: toggle_suu(), **seaded).pack(pa
 
 nupp=ctk.CTkButton(frame, text="Salvesta", command=salvesta_nägu, **seaded).pack(side="bottom", pady=5)
 
-frame_mus=ctk.CTkFrame(frame)
-frame_mus.pack( padx=10, pady=10)
-ctk.CTkButton(frame_mus, text="Mängi muusikat", command=mangi_muusika, **seaded).pack(pady=5)
-ctk.CTkButton(frame_mus, text="Peata muusika", command=peata_muusika, **seaded).pack(pady=5)
+# frame_mus=ctk.CTkFrame(frame)
+# frame_mus.pack( padx=10, pady=10)
+# ctk.CTkButton(frame_mus, text="Mängi muusikat", command=mangi_muusika, **seaded).pack(pady=5)
+# ctk.CTkButton(frame_mus, text="Peata muusika", command=peata_muusika, **seaded).pack(pady=5)
 
 app.mainloop()
